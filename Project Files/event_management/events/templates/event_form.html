@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ title }}</h1>
+<form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.name.label_tag }}
+        {{ form.name|add_class:"form-control" }}
+    </div>
+    <div class="mb-3">
+        {{ form.description.label_tag }}
+        {{ form.description|add_class:"form-control" }}
+    </div>
+    <div class="mb-3">
+        {{ form.date.label_tag }}
+        {{ form.date|add_class:"form-control" }}  <!-- The date field -->
+    </div>
+    <div class="mb-3">
+        {{ form.location.label_tag }}
+        {{ form.location|add_class:"form-control" }}
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="{% url 'event_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
